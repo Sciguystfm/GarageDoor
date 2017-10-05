@@ -11,3 +11,6 @@ def garageToggle():
 @app.route("/garageUI")
 def garageUI():
     return render_template('garageUI.html',isOpen=isOpen)
+
+if __name__ == '__main__':
+    app.run()
