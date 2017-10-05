@@ -1,0 +1,37 @@
+<!doctype html>
+<head>
+    <title>Garage Door UI</title>
+    <style>
+        body {
+            background-color: linen;
+        }
+            
+        h1 {
+            color: maroon;
+        } 
+        div{
+            text-align: center;
+        }
+        button{
+            padding: 20px;
+        }
+    </style>
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAJCMjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBEREREREQEQERERERERARAREREREREBEBEREREREQEQERERERERARAREREREREBEBEREREREQEQERERERERARAREREREREBEQAAAAAAABEBEREREREREAEREREREREQABEREREREQAAAREREREQAAAAAAAAAAAAAAAAAAAAAABAAgAAQAIAAEACAABAAgAAQAIAAEACAABAAgAAQAIAAEACAAA//AAAgAEAAIABAADAAwAA4AcAAP//AAD//wAA" rel="icon" type="image/x-icon" />
+</head>
+<body>
+    <div>
+        <h1>Garage Door!</h1>
+        <script>
+            isOpen=('{{isOpen}}'=='True');
+            function toggleGarage(){
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'http://127.0.0.1:5000/garageToggle');
+                xhr.send(null);
+                isOpen=!isOpen;
+                document.getElementById("button").textContent= (isOpen==true ? "Close the Garage" : "Open the Garage");;
+            }
+
+        </script>
+        <button id="button" type="button" onclick="toggleGarage()">{{isOpen}}</button>
+    </div>
+</body>
