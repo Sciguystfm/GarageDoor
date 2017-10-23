@@ -4,6 +4,8 @@
     <style>
         body {
             background-color: linen;
+            font-family: Arial,sans-serif;
+
         }
             
         h1 {
@@ -15,20 +17,27 @@
         button{
             padding: 20px;
         }
+        h2{
+            font-size: 120px;
+        }  
     </style>
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAJCMjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBEREREREQEQERERERERARAREREREREBEBEREREREQEQERERERERARAREREREREBEBEREREREQEQERERERERARAREREREREBEQAAAAAAABEBEREREREREAEREREREREQABEREREREQAAAREREREQAAAAAAAAAAAAAAAAAAAAAABAAgAAQAIAAEACAABAAgAAQAIAAEACAABAAgAAQAIAAEACAAA//AAAgAEAAIABAADAAwAA4AcAAP//AAD//wAA" rel="icon" type="image/x-icon" />
 </head>
 <body>
     <div>
-        <h1>Garage Door!</h1>
+        <h1>Is My Garage Door Open?</h1>
+        <h2 id="isItOpen">{{isOpen}}</h2>
         <script>
             isOpen=('{{isOpen}}'=='True');
+            document.getElementById("isItOpen").textContent= (isOpen==true ? "YES" : "NO");
             function toggleGarage(){
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', 'http://127.0.0.1:5000/garageToggle');
                 xhr.send(null);
                 isOpen=!isOpen;
-                document.getElementById("button").textContent= (isOpen==true ? "Close the Garage" : "Open the Garage");;
+                document.getElementById("button").textContent= (isOpen==true ? "Close the Garage" : "Open the Garage");
+                document.getElementById("isItOpen").textContent= (isOpen==true ? "YES" : "NO");
+
             }
 
         </script>
